@@ -14,7 +14,7 @@ router.post('/users', AsynHandler(async(req, res) => {
 }));
 
 
-router.post('/products', AsynHandler(async(req, res) => {
+router.get('/products', AsynHandler(async(req, res) => {
     await Product.deleteMany({});
     const ProductSeeder = await Product.insertMany(products);
     res.send({ProductSeeder});

@@ -1,0 +1,5 @@
+{
+    "editor.guides.highlightActiveIndentation": "always",
+    "editor.guides.bracketPairs": "active",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true
+}

@@ -1,13 +1,26 @@
 const express = require("express");  
 const dotenv = require("dotenv");
 const app = express();
+const cors = require('cors');
 const mongoose = require("mongoose");
 const databaseSeeder = require('./databaseSeeder');
 const userRoute = require("./routes/User");
 const productRoute = require("./routes/Product");
+const orderRoute = require("./routes/Order");
 
 dotenv.config();
 app.use(express.json());
+
+
+// cors config
+
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
+}
+
+app.use(cors(corsOptions));
 
 const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
@@ -31,6 +44,9 @@ app.use('/api/users', userRoute);
 
 // routes for products
 app.use('/api/products', productRoute);
+
+// routes for order
+app.use('/api/orders', orderRoute);
 
 
 app.listen(PORT || 9000, () => {
